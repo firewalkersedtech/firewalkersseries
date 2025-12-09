@@ -3,163 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKYWALKERS - Free Mock Test Platform</title>
+    <title>SKYWALKERS - Premium Mock Test Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        'brand-blue': '#1c3879',
+                        'brand-yellow': '#ffc107',
+                        'brand-text': '#333333',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Custom Animations */
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            animation: scroll 20s linear infinite;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+        /* Eduma Style Card Hover Effect */
+        .course-card { transition: all 0.3s ease; border-bottom: 3px solid transparent; }
+        .course-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-bottom: 3px solid #ffc107; }
+        .image-overlay { background: rgba(28, 56, 121, 0.4); opacity: 0; transition: 0.3s; }
+        .course-card:hover .image-overlay { opacity: 1; }
+        
+        /* Sticky Header */
+        .sticky-header { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-brand-text">
 
-    <nav class="bg-blue-700 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center">
-                    <i class="fa-solid fa-paper-plane text-2xl mr-2"></i>
-                    <span class="font-bold text-2xl tracking-wider">SKYWALKERS</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#" class="hover:text-yellow-300 transition">Home</a>
-                    <a href="#" class="hover:text-yellow-300 transition">Leaderboard</a>
-                    <a href="#" class="hover:text-yellow-300 transition">About Us</a>
-                </div>
-                <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition">
-                    Login / Signup
+    <div class="bg-brand-blue text-white text-xs py-2 hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 flex justify-between">
+            <div><i class="fa-solid fa-phone mr-2"></i> +91 98765 43210 &nbsp;|&nbsp; <i class="fa-solid fa-envelope mr-2"></i> help@skywalkers.com</div>
+            <div><i class="fa-solid fa-user mr-1"></i> Login / Register</div>
+        </div>
+    </div>
+
+    <nav class="sticky-header shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-3xl text-brand-blue"></i>
+                <span class="text-2xl font-bold text-brand-blue tracking-tight">SKYWALKERS</span>
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold text-gray-600">
+                <a href="#" class="text-brand-blue">Home</a>
+                <a href="#" class="hover:text-brand-blue transition">All Exams</a>
+                <a href="#" class="hover:text-brand-blue transition">PYQ Papers</a>
+                <a href="#" class="hover:text-brand-blue transition">Desi Blog</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <i class="fa-solid fa-magnifying-glass text-gray-500 cursor-pointer hover:text-brand-blue"></i>
+                <button class="bg-brand-yellow text-brand-blue px-5 py-2 rounded font-bold hover:bg-yellow-400 transition shadow-md">
+                    Start Test
                 </button>
             </div>
         </div>
     </nav>
 
-    <div class="relative bg-gradient-to-r from-blue-600 to-blue-800 h-[500px] flex items-center justify-center text-center text-white overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10">
-            <i class="fa-solid fa-graduation-cap text-9xl absolute top-10 left-10"></i>
-            <i class="fa-solid fa-book-open text-9xl absolute bottom-10 right-10"></i>
-        </div>
-
-        <div class="relative z-10 px-4">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Ab Rukna Mana Hai! <br> <span class="text-yellow-400">Crack Your Dream Job</span></h1>
-            <p class="text-xl md:text-2xl mb-8 opacity-90">SSC, Railways, aur Banking ke asli PYQs – Bilkul FREE.</p>
-            <a href="#categories" class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-yellow-300 transform hover:scale-105 transition duration-300">
-                Start Practice Now <i class="fa-solid fa-arrow-right ml-2"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="bg-yellow-400 text-blue-900 py-3 overflow-hidden border-b-4 border-blue-900 font-bold text-lg shadow-inner">
-        <div class="ticker-content">
-            📢 BREAKING: SSC CGL 2024 Mains Papers Added! &nbsp;&nbsp;|&nbsp;&nbsp; 🔥 FREE: SSC CGL, CHSL, CPO, GD 2025 PYQs Available Here &nbsp;&nbsp;|&nbsp;&nbsp; 🚀 Railway NTPC Mock Live &nbsp;&nbsp;|&nbsp;&nbsp; 💯 Skywalkers Special: Attempt Now!
-        </div>
-    </div>
-
-    <section id="categories" class="max-w-7xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Choose Your Battlefield</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer border-t-4 border-blue-600 group">
-                <div class="text-blue-600 text-4xl mb-4 group-hover:scale-110 transition duration-300">
-                    <i class="fa-solid fa-building-columns"></i>
+    <header class="relative bg-[url('https://images.unsplash.com/photo-1513258496098-dd22b4f71f6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center h-[500px] flex items-center justify-center">
+        <div class="absolute inset-0 bg-brand-blue opacity-80"></div>
+        <div class="relative z-10 text-center text-white px-4 w-full max-w-4xl">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Padhai Wahi, Jo Selection Dilaye</h1>
+            <p class="text-lg opacity-90 mb-8">SSC, Bank, Railway ke 100% Free Mock Tests aur Previous Year Papers.</p>
+            
+            <div class="bg-white p-2 rounded-lg shadow-2xl flex flex-col md:flex-row gap-2">
+                <div class="flex-grow flex items-center px-4 bg-gray-100 rounded">
+                    <i class="fa-solid fa-search text-gray-400 mr-2"></i>
+                    <input type="text" placeholder="Kya padhna chahte ho? (e.g. CGL 2024, Maths, MTS)" class="w-full bg-transparent py-3 focus:outline-none text-gray-700">
                 </div>
-                <h3 class="text-xl font-bold mb-2">SSC Exams</h3>
-                <p class="text-gray-600 text-sm">CGL, CHSL, MTS, CPO, GD</p>
-                <div class="mt-4 text-blue-600 font-semibold group-hover:underline">Explore <i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer border-t-4 border-red-600 group">
-                <div class="text-red-600 text-4xl mb-4 group-hover:scale-110 transition duration-300">
-                    <i class="fa-solid fa-train"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Railways</h3>
-                <p class="text-gray-600 text-sm">NTPC, Group D, ALP</p>
-                <div class="mt-4 text-red-600 font-semibold group-hover:underline">Explore <i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer border-t-4 border-green-600 group">
-                <div class="text-green-600 text-4xl mb-4 group-hover:scale-110 transition duration-300">
-                    <i class="fa-solid fa-money-check-dollar"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Banking</h3>
-                <p class="text-gray-600 text-sm">IBPS PO, Clerk, SBI</p>
-                <div class="mt-4 text-green-600 font-semibold group-hover:underline">Explore <i class="fa-solid fa-arrow-right"></i></div>
-            </div>
-
-             <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer border-t-4 border-purple-600 group">
-                <div class="text-purple-600 text-4xl mb-4 group-hover:scale-110 transition duration-300">
-                    <i class="fa-solid fa-person-military-rifle"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Defence/State</h3>
-                <p class="text-gray-600 text-sm">CDS, AFCAT, Police SI</p>
-                <div class="mt-4 text-purple-600 font-semibold group-hover:underline">Explore <i class="fa-solid fa-arrow-right"></i></div>
+                <button class="bg-brand-yellow text-brand-blue px-8 py-3 rounded font-bold hover:bg-yellow-400 transition">SEARCH</button>
             </div>
         </div>
-    </section>
+    </header>
 
-    <section class="bg-blue-50 py-16">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">Balak Kya Bolte Hain? <span class="text-yellow-500 text-4xl">★</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto px-4 py-16 flex flex-col lg:flex-row gap-8">
+        
+        <aside class="w-full lg:w-1/4 space-y-8">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="font-bold text-lg mb-4 border-l-4 border-brand-yellow pl-3">Categories</h3>
+                <ul class="space-y-3 text-gray-600">
+                    <li class="flex justify-between cursor-pointer hover:text-brand-blue font-medium"><span class="text-brand-blue">SSC Exams</span> <span>(15)</span></li>
+                    <li class="flex justify-between cursor-pointer hover:text-brand-blue"><span>Railways</span> <span>(08)</span></li>
+                    <li class="flex justify-between cursor-pointer hover:text-brand-blue"><span>Banking</span> <span>(12)</span></li>
+                    <li class="flex justify-between cursor-pointer hover:text-brand-blue"><span>Defence</span> <span>(05)</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                <h3 class="font-bold text-lg mb-4 border-l-4 border-brand-yellow pl-3">Year Filter</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-gray-100 rounded text-sm cursor-pointer hover:bg-brand-blue hover:text-white transition">2025</span>
+                    <span class="px-3 py-1 bg-gray-100 rounded text-sm cursor-pointer hover:bg-brand-blue hover:text-white transition">2024</span>
+                    <span class="px-3 py-1 bg-gray-100 rounded text-sm cursor-pointer hover:bg-brand-blue hover:text-white transition">2023</span>
+                </div>
+            </div>
+        </aside>
+
+        <main class="w-full lg:w-3/4">
+            <div class="flex justify-between items-center mb-6">
+                <p class="text-gray-500">Showing 6 popular exams</p>
+                <select class="border rounded px-3 py-1 text-gray-600 focus:outline-none">
+                    <option>Sort by: Popularity</option>
+                    <option>Sort by: Latest</option>
+                </select>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="bg-white p-8 rounded-tr-3xl rounded-bl-3xl shadow-md relative">
-                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-4 left-4"></i>
-                    <p class="text-gray-700 italic mb-6 relative z-10">"Arre bhai, pehle paid course liye the, par asli practice yahi ho rahi hai. Interface ekdum exam hall wala hai! Maza aa gaya."</p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">R</div>
-                        <div class="ml-3">
-                            <h4 class="font-bold text-sm">Rohan Kumar</h4>
-                            <p class="text-xs text-gray-500">Patna, Bihar</p>
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden group cursor-pointer relative">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="SSC CGL" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute top-2 left-2 bg-brand-yellow text-xs font-bold px-2 py-1 rounded">HOT</div>
+                        <div class="absolute inset-0 image-overlay flex items-center justify-center">
+                            <span class="bg-white text-brand-blue px-4 py-2 rounded-full font-bold shadow-lg">Attempt Now</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+                            <span><i class="fa-solid fa-file-lines text-brand-yellow"></i> 45 Sets</span>
+                            <span><i class="fa-solid fa-user-group"></i> 12k Users</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-brand-blue transition">SSC CGL Mains 2024</h3>
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-8 h-8 rounded-full mr-2 border border-gray-200">
+                            <span class="text-sm text-gray-600">By Skywalkers Team</span>
+                        </div>
+                        <div class="border-t pt-3 flex justify-between items-center">
+                            <div class="text-yellow-500 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                            <span class="text-green-600 font-bold text-lg">FREE</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-tr-3xl rounded-bl-3xl shadow-md relative mt-4 md:mt-0">
-                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-4 left-4"></i>
-                    <p class="text-gray-700 italic mb-6 relative z-10">"Gajab website hai yaar! Saare shifts ek jagah mil gaye, wo bhi free me. Bhagwan bhala kare admin ka. Best for CGL aspirants."</p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">P</div>
-                        <div class="ml-3">
-                            <h4 class="font-bold text-sm">Priya Singh</h4>
-                            <p class="text-xs text-gray-500">Indore, MP</p>
+                <div class="course-card bg-white rounded-lg shadow-md overflow-hidden group cursor-pointer relative">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1584697964405-83341c65a297?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="SSC CHSL" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 image-overlay flex items-center justify-center">
+                            <span class="bg-white text-brand-blue px-4 py-2 rounded-full font-bold shadow-lg">Attempt Now</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+                            <span><i class="fa-solid fa-file-lines text-brand-yellow"></i> 30 Sets</span>
+                            <span><i class="fa-solid fa-user-group"></i> 8k Users</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-brand-blue transition">SSC CHSL Tier 1</h3>
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-8 h-8 rounded-full mr-2 border border-gray-200">
+                            <span class="text-sm text-gray-600">By Skywalkers Team</span>
+                        </div>
+                        <div class="border-t pt-3 flex justify-between items-center">
+                            <div class="text-yellow-500 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="text-green-600 font-bold text-lg">FREE</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white p-8 rounded-tr-3xl rounded-bl-3xl shadow-md relative mt-4 md:mt-0">
-                    <i class="fa-solid fa-quote-left text-4xl text-blue-100 absolute top-4 left-4"></i>
-                    <p class="text-gray-700 italic mb-6 relative z-10">"Mock test diya, marks kam aaye par analysis dekh ke dil khush ho gaya. Ab CGL phodna hai! SKYWALKERS OP 🔥"</p>
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">V</div>
-                        <div class="ml-3">
-                            <h4 class="font-bold text-sm">Vikas Yadav</h4>
-                            <p class="text-xs text-gray-500">Lucknow, UP</p>
+                 <div class="course-card bg-white rounded-lg shadow-md overflow-hidden group cursor-pointer relative">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="SSC MTS" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 image-overlay flex items-center justify-center">
+                            <span class="bg-white text-brand-blue px-4 py-2 rounded-full font-bold shadow-lg">Attempt Now</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center justify-between text-xs text-gray-500 mb-2">
+                            <span><i class="fa-solid fa-file-lines text-brand-yellow"></i> 20 Sets</span>
+                            <span><i class="fa-solid fa-user-group"></i> 5k Users</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-brand-blue transition">SSC MTS (Havaldar)</h3>
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-8 h-8 rounded-full mr-2 border border-gray-200">
+                            <span class="text-sm text-gray-600">By Skywalkers Team</span>
+                        </div>
+                        <div class="border-t pt-3 flex justify-between items-center">
+                            <div class="text-yellow-500 text-sm">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                            </div>
+                            <span class="text-green-600 font-bold text-lg">FREE</span>
                         </div>
                     </div>
                 </div>
 
             </div>
+        </main>
+    </div>
+
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-brand-blue mb-2">Balak Kya Bolte Hain?</h2>
+            <p class="text-gray-500 mb-12">Desi Reviews from Real Students</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded shadow hover:shadow-lg transition">
+                    <p class="text-gray-600 italic mb-6">"Bhai maza aa gaya! Interface ekdum TCS wala hai. CGL ke liye best source hai ye."</p>
+                    <h4 class="font-bold text-brand-blue">Rohan Kumar</h4>
+                    <span class="text-xs text-gray-400">CGL Aspirant, Bihar</span>
+                </div>
+                 <div class="bg-white p-8 rounded shadow hover:shadow-lg transition">
+                    <p class="text-gray-600 italic mb-6">"Sabse badhiya baat ye hai ki sab kuch free hai aur latest papers turant update hote hain."</p>
+                    <h4 class="font-bold text-brand-blue">Priya Singh</h4>
+                    <span class="text-xs text-gray-400">CHSL Aspirant, MP</span>
+                </div>
+                 <div class="bg-white p-8 rounded shadow hover:shadow-lg transition">
+                    <p class="text-gray-600 italic mb-6">"Previous year papers ko shift wise lagana bohot easy hai yaha. Love from UP!"</p>
+                    <h4 class="font-bold text-brand-blue">Vikas Yadav</h4>
+                    <span class="text-xs text-gray-400">MTS Aspirant, UP</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-white py-8 text-center">
-        <p class="mb-2">&copy; 2025 SKYWALKERS. Made with ❤️ for Students.</p>
-        <div class="space-x-4">
-            <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-telegram"></i> Telegram</a>
-            <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-youtube"></i> YouTube</a>
-            <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <footer class="bg-brand-text text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">SKYWALKERS</h2>
+            <p class="text-gray-400 mb-8 max-w-lg mx-auto">India ka sabse bharosemand Free Mock Test platform. Humara mission hai har student ko quality education free me dena.</p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-brand-blue transition"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-red-600 transition"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-blue-400 transition"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-sm text-gray-500">
+                &copy; 2025 Skywalkers EdTech. All Rights Reserved.
+            </div>
         </div>
     </footer>
 
 </body>
-</html>
+                    </html>
