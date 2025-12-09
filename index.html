@@ -3,50 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIREWALKERS - SSC Special</title>
+    <title>FIREWALKERS - SSC CGL 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Poppins', 'sans-serif'], serif: ['Cinzel', 'serif'] },
-                    colors: { 'brand-dark': '#0B1120', 'brand-gold': '#D4AF37', 'brand-fire': '#E25822' }
+                    fontFamily: { sans: ['Roboto', 'sans-serif'], serif: ['Cinzel', 'serif'] },
+                    colors: { 'brand-dark': '#0f172a', 'brand-gold': '#fbbf24', 'brand-accent': '#f59e0b' }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-brand-dark text-white h-screen flex flex-col items-center justify-center overflow-hidden relative">
+<body class="bg-brand-dark text-white h-screen flex flex-col items-center justify-center relative overflow-hidden">
 
-    <div class="absolute top-0 right-0 w-80 h-80 bg-brand-fire/20 rounded-full blur-[100px]"></div>
-    <div class="absolute bottom-0 left-0 w-60 h-60 bg-brand-gold/10 rounded-full blur-[80px]"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-600/10 rounded-full blur-[100px]"></div>
 
-    <div class="z-10 text-center px-4 max-w-lg w-full">
+    <div class="z-10 text-center px-4 w-full max-w-md">
         
-        <div class="mb-8 flex justify-center">
-            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-brand-gold to-brand-fire flex items-center justify-center shadow-2xl shadow-orange-500/20 animate-pulse">
-                <i class="fa-solid fa-fire text-4xl text-white"></i>
+        <div class="mb-6 flex justify-center">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-brand-gold to-yellow-600 flex items-center justify-center shadow-2xl shadow-yellow-500/20 animate-bounce-slow">
+                <i class="fa-solid fa-fire text-4xl text-brand-dark"></i>
             </div>
         </div>
 
-        <h1 class="text-4xl font-black font-serif tracking-tight mb-2">FIRE<span class="text-brand-gold">WALKERS</span></h1>
-        <p class="text-gray-400 tracking-widest text-xs uppercase mb-10">Walk Through The Challenge</p>
+        <h1 class="text-3xl font-black font-serif tracking-tight mb-2">FIRE<span class="text-brand-gold">WALKERS</span></h1>
+        <p class="text-gray-400 text-xs tracking-[0.3em] uppercase mb-12">Walk Through The Challenge</p>
 
-        <div class="bg-white/5 backdrop-blur-lg border border-white/10 p-6 rounded-2xl mb-8">
-            <h2 class="text-2xl font-bold mb-2">SSC CGL & CHSL 2025</h2>
-            <p class="text-brand-gold text-sm font-semibold">ALL SHIFTS PYQ (TIER 1 & MAINS)</p>
+        <div class="bg-white/5 backdrop-blur-xl border border-white/10 p-1 rounded-2xl mb-8 transform transition hover:scale-105 duration-300">
+            <div class="bg-gradient-to-b from-gray-800 to-gray-900 rounded-xl p-6 border border-white/5">
+                <div class="flex justify-between items-start mb-4">
+                    <div class="text-left">
+                        <h2 class="text-2xl font-bold text-white">SSC CGL 2025</h2>
+                        <p class="text-gray-400 text-sm">Tier 1 & Mains (New Pattern)</p>
+                    </div>
+                    <span class="bg-green-500/20 text-green-400 text-xs font-bold px-2 py-1 rounded">LIVE</span>
+                </div>
+                
+                <div class="flex gap-2 mb-6">
+                    <span class="text-xs bg-gray-700 px-2 py-1 rounded text-gray-300">46+ Shifts</span>
+                    <span class="text-xs bg-gray-700 px-2 py-1 rounded text-gray-300">Free Access</span>
+                </div>
+
+                <a href="shifts.html" class="block w-full bg-brand-gold hover:bg-yellow-400 text-brand-dark font-bold py-3 rounded-lg shadow-lg transition-all text-center">
+                    Attempt Mock Tests <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
         </div>
 
-        <a href="shifts.html" class="group relative w-full block bg-gradient-to-r from-brand-gold to-yellow-500 text-brand-dark font-bold text-lg py-4 rounded-xl shadow-lg hover:scale-105 transition-transform duration-200">
-            Start Practicing
-            <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
-            <div class="absolute inset-0 bg-white/30 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity"></div>
-        </a>
-
-        <p class="mt-6 text-xs text-gray-500">Updated with Sept/Oct 2025 Answer Keys</p>
+        <p class="text-gray-500 text-xs">Based on Answer Keys released in Oct 2025</p>
     </div>
-
+    
+    <style>
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow { animation: bounce-slow 3s infinite ease-in-out; }
+    </style>
 </body>
 </html>
