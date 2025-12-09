@@ -25,10 +25,25 @@
     <style>
         .circle-icon { transition: all 0.3s ease; }
         .circle-icon:hover { transform: translateY(-5px); background-color: #ffc107; color: #1c3879; }
-        .feature-card { transition: all 0.3s ease; }
-        .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .exam-card:hover .exam-icon { transform: scale(1.1); color: #ffc107; }
         .exam-icon { transition: transform 0.3s ease; }
+        
+        /* Slider Styles */
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        /* Vector Image Overlay helper */
+        .vector-bg {
+            background-color: #e0e7ff; /* Light blue background for vectors */
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -39,7 +54,7 @@
                 <span><i class="fa-solid fa-envelope mr-2 text-brand-yellow"></i> skywalkers.edtech@gmail.com</span>
             </div>
             <div class="hidden md:block opacity-80">
-                <span>India's Best Free Exam Practice Platform</span>
+                <span>Decode New SSC Trends - Completely Free!</span>
             </div>
         </div>
     </div>
@@ -53,7 +68,7 @@
 
             <div class="hidden md:flex flex-1 max-w-md mx-8">
                 <div class="relative w-full">
-                    <input type="text" placeholder="Search for Exams (e.g. CGL, NTPC)..." class="w-full border border-gray-300 rounded-full py-2 px-5 focus:outline-none focus:border-brand-blue bg-gray-50">
+                    <input type="text" placeholder="Search (e.g. CGL Mains, Reasoning)..." class="w-full border border-gray-300 rounded-full py-2 px-5 focus:outline-none focus:border-brand-blue bg-gray-50">
                     <button class="absolute right-1 top-1 bg-brand-blue text-white w-8 h-8 rounded-full flex items-center justify-center">
                         <i class="fa-solid fa-search text-xs"></i>
                     </button>
@@ -62,36 +77,68 @@
 
             <div class="flex items-center gap-6">
                 <a href="#" class="flex flex-col items-center group text-gray-600 hover:text-brand-blue">
-                    <div class="relative">
-                        <i class="fa-solid fa-right-to-bracket text-xl mb-1 group-hover:scale-110 transition"></i>
-                    </div>
+                    <div class="relative"><i class="fa-solid fa-right-to-bracket text-xl mb-1 group-hover:scale-110 transition"></i></div>
                     <span class="text-xs font-semibold">Login</span>
                 </a>
-                
                 <a href="#" class="flex flex-col items-center group text-gray-600 hover:text-brand-blue">
-                    <div class="relative">
-                        <i class="fa-solid fa-user-plus text-xl mb-1 group-hover:scale-110 transition"></i>
-                    </div>
+                    <div class="relative"><i class="fa-solid fa-user-plus text-xl mb-1 group-hover:scale-110 transition"></i></div>
                     <span class="text-xs font-semibold">Signup</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <div class="relative bg-brand-dark text-white h-[450px] flex items-center">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-20"></div>
+    <div class="relative h-[500px] overflow-hidden bg-brand-dark text-white">
         
-        <div class="relative max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 space-y-6">
-                <span class="bg-brand-yellow text-brand-dark px-3 py-1 rounded font-bold text-sm uppercase tracking-wide">New 2025 Updated</span>
-                <h2 class="text-5xl font-bold leading-tight">Ab Selection Hoga <br> <span class="text-brand-yellow">Bilkul Free!</span></h2>
-                <p class="text-lg text-gray-300">SSC, Railway aur Banking ke Latest PYQs ka sabse bada collection.</p>
-                <div class="flex gap-4">
-                    <a href="#exams" class="bg-brand-yellow text-brand-dark px-8 py-3 rounded font-bold hover:bg-white transition shadow-lg">Start Practice</a>
-                    <a href="#" class="border-2 border-white px-8 py-3 rounded font-bold hover:bg-white hover:text-brand-blue transition">View Plans</a>
+        <div class="slide active flex items-center" style="background-image: url('https://img.freepik.com/free-vector/gradient-numerology-background_23-2149955858.jpg?w=1380&t=st=1709123456~exp=1709124056~hmac=example');">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent"></div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 space-y-6 z-10">
+                    <span class="bg-brand-yellow text-brand-dark px-3 py-1 rounded font-bold text-sm uppercase tracking-wide animate-pulse">New Trend Alert</span>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">SSC CGL & CHSL 2025 <br> PYQ Attempt & Decode</h2>
+                    <p class="text-xl text-yellow-400 font-semibold">Bilkul Free.</p>
+                    <p class="text-gray-300 max-w-lg">Latest TCS pattern ke hisaab se naye sawalon ka trend pakdo.</p>
+                    <div class="flex gap-4">
+                        <a href="#exams" class="bg-brand-yellow text-brand-dark px-8 py-3 rounded-full font-bold hover:scale-105 transition shadow-lg shadow-yellow-500/30">Start Attempting</a>
+                    </div>
+                </div>
+                <div class="md:w-2/5 hidden md:block z-10">
+                   <img src="https://cdni.iconscout.com/illustration/premium/thumb/student-studying-on-laptop-illustration-download-in-svg-png-gif-file-formats--online-education-e-learning-digital-pack-school-illustrations-4545937.png" alt="Study Vector" class="w-full drop-shadow-2xl animate-bounce" style="animation-duration: 3s;">
                 </div>
             </div>
         </div>
+
+        <div class="slide flex items-center" style="background-image: url('https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg');">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent"></div>
+            <div class="relative max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 space-y-6 z-10">
+                    <span class="bg-green-500 text-white px-3 py-1 rounded font-bold text-sm uppercase">Detailed Analysis</span>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">Apni Kamiyo Ko <br> <span class="text-green-400">Taakat Banao</span></h2>
+                    <p class="text-gray-300 max-w-lg">Har test ke baad deep analysis report. Jaano topper se kitna peeche ho.</p>
+                    <a href="#exams" class="border-2 border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-brand-blue transition">Check Features</a>
+                </div>
+                <div class="md:w-2/5 hidden md:block z-10">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/data-analysis-illustration-download-in-svg-png-gif-file-formats--business-analytics-statistic-marketing-pack-illustrations-3790595.png" alt="Analysis Vector" class="w-full drop-shadow-2xl">
+                </div>
+            </div>
+        </div>
+
+        <div class="slide flex items-center" style="background-image: url('https://img.freepik.com/free-vector/abstract-blue-geometric-shapes-background_1035-17545.jpg');">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent"></div>
+            <div class="relative max-w-7xl mx-auto px-4 w-full flex flex-col md:flex-row items-center">
+                <div class="md:w-3/5 space-y-6 z-10">
+                    <span class="bg-purple-500 text-white px-3 py-1 rounded font-bold text-sm uppercase">All In One</span>
+                    <h2 class="text-4xl md:text-5xl font-bold leading-tight">Railway, Bank & State <br> <span class="text-purple-300">Sab Ek Jagah</span></h2>
+                    <p class="text-gray-300 max-w-lg">NTPC, Group D, MP Police, sabhi ke mocks available hain.</p>
+                    <a href="#exams" class="bg-white text-brand-blue px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition">Explore All</a>
+                </div>
+                <div class="md:w-2/5 hidden md:block z-10">
+                    <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-learning-illustration-download-in-svg-png-gif-file-formats--education-study-laptop-student-school-pack-illustrations-5743415.png" alt="All Exams Vector" class="w-full drop-shadow-2xl">
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <section class="max-w-7xl mx-auto px-4 -mt-16 relative z-20">
@@ -117,40 +164,25 @@
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <h2 class="text-2xl font-bold text-brand-dark mb-10">Choose Your Goal</h2>
-            
             <div class="flex flex-wrap justify-center gap-8 md:gap-12">
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-brand-blue circle-icon border border-gray-200">
-                        <i class="fa-solid fa-building-columns"></i>
-                    </div>
+                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-brand-blue circle-icon border border-gray-200"><i class="fa-solid fa-building-columns"></i></div>
                     <span class="mt-3 font-semibold text-gray-700 group-hover:text-brand-blue">SSC</span>
                 </a>
-
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-red-600 circle-icon border border-gray-200">
-                        <i class="fa-solid fa-train-subway"></i>
-                    </div>
+                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-red-600 circle-icon border border-gray-200"><i class="fa-solid fa-train-subway"></i></div>
                     <span class="mt-3 font-semibold text-gray-700 group-hover:text-red-600">Railway</span>
                 </a>
-
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-green-600 circle-icon border border-gray-200">
-                        <i class="fa-solid fa-building-bank"></i>
-                    </div>
+                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-green-600 circle-icon border border-gray-200"><i class="fa-solid fa-building-bank"></i></div>
                     <span class="mt-3 font-semibold text-gray-700 group-hover:text-green-600">Bank</span>
                 </a>
-
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-purple-600 circle-icon border border-gray-200">
-                        <i class="fa-solid fa-landmark"></i>
-                    </div>
+                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-purple-600 circle-icon border border-gray-200"><i class="fa-solid fa-landmark"></i></div>
                     <span class="mt-3 font-semibold text-gray-700 group-hover:text-purple-600">UPSC</span>
                 </a>
-
                 <a href="#" class="group flex flex-col items-center">
-                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-orange-500 circle-icon border border-gray-200">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                    </div>
+                    <div class="w-24 h-24 bg-white rounded-full shadow-md flex items-center justify-center text-3xl text-orange-500 circle-icon border border-gray-200"><i class="fa-solid fa-map-location-dot"></i></div>
                     <span class="mt-3 font-semibold text-gray-700 group-hover:text-orange-500">MPPSC</span>
                 </a>
             </div>
@@ -162,7 +194,7 @@
             <div class="flex justify-between items-end mb-10">
                 <div>
                     <h2 class="text-3xl font-bold text-brand-dark">Start Test Series</h2>
-                    <p class="text-gray-500 mt-2">Select your exam to start practicing immediately</p>
+                    <p class="text-gray-500 mt-2">Latest patterns ke hisaab se practice karein</p>
                 </div>
                 <a href="#" class="text-brand-blue font-semibold hover:underline hidden md:block">View All Exams <i class="fa-solid fa-arrow-right ml-1"></i></a>
             </div>
@@ -174,11 +206,11 @@
                         <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">FREE</span>
                     </div>
                     <h3 class="text-lg font-bold text-gray-800 mb-1 group-hover:text-brand-blue">SSC CGL Mains</h3>
-                    <p class="text-sm text-gray-500 mb-4">Latest 2024 Pattern</p>
+                    <p class="text-sm text-gray-500 mb-4">2024 Updated Pattern</p>
                     <div class="w-full bg-brand-blue text-white text-center py-2 rounded font-medium opacity-0 group-hover:opacity-100 transition">Attempt Now</div>
                 </div>
 
-                <div class="exam-card bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-brand-yellow cursor-pointer group">
+                 <div class="exam-card bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-brand-yellow cursor-pointer group">
                     <div class="flex justify-between items-start mb-4">
                         <i class="fa-solid fa-clipboard-check text-4xl text-red-500 exam-icon"></i>
                         <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">FREE</span>
@@ -188,7 +220,7 @@
                     <div class="w-full bg-brand-blue text-white text-center py-2 rounded font-medium opacity-0 group-hover:opacity-100 transition">Attempt Now</div>
                 </div>
 
-                <div class="exam-card bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-brand-yellow cursor-pointer group">
+                 <div class="exam-card bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-brand-yellow cursor-pointer group">
                     <div class="flex justify-between items-start mb-4">
                         <i class="fa-solid fa-shield-halved text-4xl text-purple-600 exam-icon"></i>
                         <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">FREE</span>
@@ -198,7 +230,7 @@
                     <div class="w-full bg-brand-blue text-white text-center py-2 rounded font-medium opacity-0 group-hover:opacity-100 transition">Attempt Now</div>
                 </div>
 
-                <div class="exam-card bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-brand-yellow cursor-pointer group">
+                 <div class="exam-card bg-gray-50 rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-brand-yellow cursor-pointer group">
                     <div class="flex justify-between items-start mb-4">
                         <i class="fa-solid fa-pen-nib text-4xl text-orange-500 exam-icon"></i>
                         <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">FREE</span>
@@ -222,20 +254,16 @@
                 <div class="flex space-x-4">
                     <a href="#" class="w-10 h-10 rounded bg-gray-700 flex items-center justify-center hover:bg-brand-blue"><i class="fa-brands fa-telegram"></i></a>
                     <a href="#" class="w-10 h-10 rounded bg-gray-700 flex items-center justify-center hover:bg-red-600"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="w-10 h-10 rounded bg-gray-700 flex items-center justify-center hover:bg-pink-600"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
-            
             <div>
                 <h3 class="text-lg font-bold mb-4 border-l-4 border-brand-yellow pl-3">Exam Links</h3>
                 <ul class="space-y-2 text-gray-400">
                     <li><a href="#" class="hover:text-white">SSC CGL / CHSL</a></li>
                     <li><a href="#" class="hover:text-white">Railway NTPC</a></li>
                     <li><a href="#" class="hover:text-white">Banking Exams</a></li>
-                    <li><a href="#" class="hover:text-white">State Police</a></li>
                 </ul>
             </div>
-
             <div>
                 <h3 class="text-lg font-bold mb-4 border-l-4 border-brand-yellow pl-3">Contact</h3>
                 <ul class="space-y-2 text-gray-400">
@@ -245,9 +273,27 @@
             </div>
         </div>
         <div class="border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
-            &copy; 2025 Skywalkers EdTech. All Rights Reserved.
+            &copy; 2025 Skywalkers EdTech.
         </div>
     </footer>
 
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            // Hide current
+            slides[currentSlide].classList.remove('active');
+            
+            // Calculate next
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Show next
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 4 seconds
+        setInterval(nextSlide, 4000);
+    </script>
 </body>
-</html>
+    </html>
