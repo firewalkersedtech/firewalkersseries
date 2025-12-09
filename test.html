@@ -7,20 +7,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* Hide scrollbar but allow scroll */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Palette Drawer Transition */
         .palette-drawer { transition: transform 0.3s ease-in-out; }
-        .palette-drawer.closed { transform: translateX(100%); } /* Hidden on Mobile */
+        .palette-drawer.closed { transform: translateX(100%); }
         
-        /* Desktop: Always visible */
         @media (min-width: 768px) {
             .palette-drawer.closed { transform: translateX(0); }
         }
 
-        /* Radio Button Styling */
         .opt-radio:checked + div { background-color: #eff6ff; border-color: #3b82f6; border-width: 2px; }
         .opt-radio:checked + div .circle-id { background-color: #3b82f6; color: white; border-color: #3b82f6; }
     </style>
@@ -60,11 +56,25 @@
                 </div>
             </div>
 
-            <div class="mb-6 text-gray-900 text-base font-medium leading-relaxed">
+            <div id="q-content" class="text-gray-900 text-base font-medium leading-relaxed">
                 <p id="q-text" class="text-lg">Select the related word/letters/number from the given alternatives.</p>
                 <p class="font-bold mt-3 text-xl text-[#0B1120]">BVSC : YEHX :: MRCP : ?</p>
             </div>
 
+            <div class="mt-6 mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-xl flex flex-col gap-2 shadow-sm">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-circle-info text-yellow-600 mt-1"></i>
+                    <p class="text-xs text-gray-600 leading-relaxed">
+                        <span class="font-bold text-gray-800">Formatting Issue?</span>
+                        Bhai, hosting aur typing ke paise nahi hain, isliye questions raw format mein hain. Hum free mein best content dene ki koshish kar rahe hain.
+                    </p>
+                </div>
+                <div class="ml-7">
+                    <span class="text-xs font-bold text-[#0B1120] bg-yellow-200 px-3 py-1.5 rounded border border-yellow-300 select-all">
+                        Support Us (UPI): 8989486507@ybl
+                    </span>
+                </div>
+            </div>
             <div class="space-y-3 mb-10" id="options-container">
                 </div>
         </main>
@@ -72,7 +82,6 @@
         <div id="palette-overlay" onclick="togglePalette()" class="fixed inset-0 bg-black/50 z-30 hidden md:hidden"></div>
         
         <aside id="palette" class="palette-drawer closed fixed inset-y-0 right-0 w-[80%] max-w-[300px] bg-white border-l border-gray-300 z-40 md:relative md:w-80 md:flex flex-col shadow-2xl md:shadow-none flex flex-col h-full">
-            
             <div class="p-3 bg-gray-100 border-b flex justify-between items-center shrink-0">
                 <div class="flex items-center gap-2">
                     <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center font-bold text-gray-600">U</div>
@@ -90,8 +99,7 @@
 
             <div class="flex-1 overflow-y-auto p-3">
                 <h4 class="text-xs font-bold mb-2 text-gray-500 uppercase tracking-wide">Question Palette</h4>
-                <div class="grid grid-cols-5 gap-2" id="grid-container">
-                    </div>
+                <div class="grid grid-cols-5 gap-2" id="grid-container"></div>
             </div>
 
             <div class="p-4 border-t bg-gray-50 shrink-0">
@@ -113,13 +121,11 @@
     </footer>
 
     <script>
-        // --- LOGIC ---
         const subjects = ['Reasoning', 'GK', 'Quant', 'English'];
         let currSec = 0;
         let currQ = 0;
         let timeLeft = 3600;
 
-        // Create 25 questions per section
         const data = subjects.map(() => Array.from({length: 25}, (_, i) => ({
             id: i+1, status: 'not-visited', marked: null
         })));
@@ -143,12 +149,11 @@
         function renderGrid() {
             const grid = document.getElementById('grid-container');
             grid.innerHTML = data[currSec].map((q, i) => {
-                let color = 'bg-gray-200 text-gray-600 border border-gray-300'; // Default
+                let color = 'bg-gray-200 text-gray-600 border border-gray-300';
                 if(q.status === 'answered') color = 'bg-green-500 text-white border-green-600';
                 if(q.status === 'not-answered') color = 'bg-red-500 text-white border-red-600';
-                if(i === currQ) color += ' ring-2 ring-blue-500 ring-offset-1'; // Active Focus
-                
-                return `<div onclick="jumpTo(${i})" class="h-9 w-9 rounded-md flex items-center justify-center text-xs font-bold cursor-pointer ${color}">${q.id}</div>`;
+                let border = i === currQ ? 'ring-2 ring-blue-500 ring-offset-1' : '';
+                return `<div onclick="jumpTo(${i})" class="h-9 w-9 rounded-md flex items-center justify-center text-xs font-bold cursor-pointer ${color} ${border}">${q.id}</div>`;
             }).join('');
         }
 
@@ -181,7 +186,6 @@
             } else {
                 data[currSec][currQ].status = 'not-answered';
             }
-            
             if(currQ < 24) currQ++;
             loadQuestion();
             renderGrid();
