@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Screen - FIREWALKERS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] },
+                    colors: {
+                        'brand-dark': '#0B1120', 
+                        'brand-gold': '#D4AF37',
+                        'brand-fire': '#E25822',
+                        'tcs-green': '#22C55E', // Save & Next
+                        'tcs-red': '#EF4444',   // Clear Response
+                        'tcs-violet': '#8B5CF6', // Mark for Review
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar for Palette */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* Option Selection Styling */
+        .option-radio:checked + div {
+            border-color: #D4AF37;
+            background-color: #FFFBEB;
+        }
+        .option-radio:checked + div .circle-indicator {
+            background-color: #D4AF37;
+            border-color: #D4AF37;
+        }
+
+        /* Responsive Layout Tweaks */
+        @media (max-width: 768px) {
+            .palette-container { 
+                position: fixed; top: 0; right: -100%; height: 100vh; z-index: 50; transition: right 0.3s ease; 
+            }
+            .palette-container.open { right: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col overflow-hidden select-none">
+
+    <header class="bg-brand-dark text-white h-16 flex justify-between items-center px-4 shadow-md shrink-0 z-40">
+        <div class="flex items-center gap-3">
+            <h1 class="font-bold text-lg hidden md:block text-brand-gold tracking-wide">FIREWALKERS</h1>
+            <div class="h-6 w-px bg-gray-600 mx-2 hidden md:block"></div>
+            <span class="text-sm md:text-base font-medium">SSC CGL Mains Full Mock 01</span>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2 bg-gray-800 px-3 py-1.5 rounded border border-brand-gold/30">
+                <i class="fa-regular fa-clock text-brand-gold"></i>
+                <span class="font-mono text-xl font-bold text-white" id="timer">00:59:42</span>
+            </div>
+            
+            <button onclick="togglePalette()" class="md:hidden text-brand-gold text-2xl">
+                <i class="fa-solid fa-grid-2"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="bg-white border-b border-gray-200 px-2 flex overflow-x-auto whitespace-nowrap shrink-0 scrollbar-hide">
+        <button class="px-6 py-3 text-sm font-bold text-white bg-brand-fire border-b-2 border-brand-fire">Reasoning</button>
+        <button class="px-6 py-3 text-sm font-semibold text-gray-600 hover:bg-gray-50 hover:text-brand-dark transition">Gen. Awareness</button>
+        <button class="px-6 py-3 text-sm font-semibold text-gray-600 hover:bg-gray-50 hover:text-brand-dark transition">Quant. Aptitude</button>
+        <button class="px-6 py-3 text-sm font-semibold text-gray-600 hover:bg-gray-50 hover:text-brand-dark transition">English Lang</button>
+    </div>
+
+    <div class="flex-1 flex overflow-hidden relative">
+        
+        <main class="flex-1 flex flex-col h-full bg-white overflow-y-auto w-full">
+            
+            <div class="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0 z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-brand-dark font-bold text-lg">Question No. 1</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded border border-green-200">+3.0</span>
+                    <span class="bg-red-100 text-red-600 text-xs px-2 py-0.5 rounded border border-red-200">-1.0</span>
+                </div>
+                <div class="flex gap-4 text-gray-400">
+                    <button title="Report" class="hover:text-red-500 transition"><i class="fa-solid fa-triangle-exclamation"></i></button>
+                    <button title="Bookmark" class="hover:text-brand-gold transition"><i class="fa-solid fa-bookmark"></i></button>
+                </div>
+            </div>
+
+            <div class="p-5 text-gray-800 text-base md:text-lg leading-relaxed border-b border-gray-100">
+                <p class="font-medium">Select the option that is related to the third term in the same way as the second term is related to the first term.</p>
+                <p class="mt-4 font-bold text-xl text-brand-dark">BVSC : YEHX :: MRCP : ?</p>
+            </div>
+
+            <div class="p-5 space-y-3 pb-24"> <label class="cursor-pointer block group">
+                    <input type="radio" name="option" class="hidden option-radio">
+                    <div class="flex items-center p-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 transition group-hover:border-brand-gold/50">
+                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 mr-4 flex items-center justify-center circle-indicator"></div>
+                        <span class="font-semibold text-gray-700">A. NIXK</span>
+                    </div>
+                </label>
+
+                <label class="cursor-pointer block group">
+                    <input type="radio" name="option" class="hidden option-radio">
+                    <div class="flex items-center p-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 transition group-hover:border-brand-gold/50">
+                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 mr-4 flex items-center justify-center circle-indicator"></div>
+                        <span class="font-semibold text-gray-700">B. OIYK</span>
+                    </div>
+                </label>
+
+                <label class="cursor-pointer block group">
+                    <input type="radio" name="option" class="hidden option-radio">
+                    <div class="flex items-center p-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 transition group-hover:border-brand-gold/50">
+                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 mr-4 flex items-center justify-center circle-indicator"></div>
+                        <span class="font-semibold text-gray-700">C. NJXK</span>
+                    </div>
+                </label>
+
+                <label class="cursor-pointer block group">
+                    <input type="radio" name="option" class="hidden option-radio">
+                    <div class="flex items-center p-3 rounded-lg border-2 border-gray-200 hover:bg-gray-50 transition group-hover:border-brand-gold/50">
+                        <div class="w-6 h-6 rounded-full border-2 border-gray-300 mr-4 flex items-center justify-center circle-indicator"></div>
+                        <span class="font-semibold text-gray-700">D. NJXL</span>
+                    </div>
+                </label>
+
+            </div>
+        </main>
+
+        <aside id="palette" class="palette-container w-80 bg-white border-l border-gray-200 flex flex-col shrink-0 shadow-2xl md:shadow-none">
+            
+            <div class="p-4 border-b border-gray-100 flex items-center gap-3 bg-gray-50">
+                <div class="w-10 h-10 rounded-full bg-brand-dark text-brand-gold flex items-center justify-center font-bold">U</div>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-800">User Name</h4>
+                    <span class="text-xs text-green-600 font-semibold">Online</span>
+                </div>
+                <button onclick="togglePalette()" class="ml-auto md:hidden text-gray-500"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+
+            <div class="p-3 grid grid-cols-2 gap-2 text-xs border-b border-gray-100 bg-white">
+                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-green-500"></span> Answered</div>
+                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> Not Answered</div>
+                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-purple-500"></span> Mark Review</div>
+                <div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full border border-gray-300"></span> Not Visited</div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4">
+                <h3 class="font-bold text-sm mb-3 text-gray-700">Reasoning Section</h3>
+                <div class="grid grid-cols-5 gap-2">
+                    <button class="h-9 w-9 rounded-full bg-brand-dark text-white font-medium text-sm border-2 border-brand-gold shadow-lg transform scale-110">1</button>
+                    <button class="h-9 w-9 rounded-full bg-green-500 text-white font-medium text-sm hover:opacity-80">2</button>
+                    <button class="h-9 w-9 rounded-full bg-red-500 text-white font-medium text-sm hover:opacity-80">3</button>
+                    <button class="h-9 w-9 rounded-full bg-purple-500 text-white font-medium text-sm hover:opacity-80">4</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">5</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">6</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">7</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">8</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">9</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">10</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">11</button>
+                    <button class="h-9 w-9 rounded-full border border-gray-300 text-gray-600 font-medium text-sm hover:bg-gray-100">12</button>
+                </div>
+            </div>
+
+            <div class="p-4 border-t border-gray-200 bg-gray-50">
+                <button class="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700 shadow-md transition">SUBMIT TEST</button>
+            </div>
+
+        </aside>
+    </div>
+
+    <footer class="bg-white border-t border-gray-200 p-3 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] z-30">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
+            
+            <div class="flex gap-2">
+                <button class="px-3 md:px-6 py-2 rounded border border-purple-500 text-purple-600 font-bold text-sm md:text-base hover:bg-purple-50 transition hidden sm:block">
+                    Mark for Review
+                </button>
+                <button class="px-3 md:px-6 py-2 rounded border border-red-500 text-red-500 font-bold text-sm md:text-base hover:bg-red-50 transition">
+                    Clear
+                </button>
+                <button class="sm:hidden px-3 py-2 rounded bg-purple-100 text-purple-700 font-bold text-lg"><i class="fa-solid fa-bookmark"></i></button>
+            </div>
+
+            <button class="px-6 md:px-10 py-2 rounded bg-tcs-green text-white font-bold text-sm md:text-base hover:bg-green-600 shadow-lg hover:shadow-green-500/30 transition flex items-center gap-2">
+                Save & Next <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // Palette Toggle for Mobile
+        function togglePalette() {
+            const palette = document.getElementById('palette');
+            palette.classList.toggle('open');
+        }
+
+        // Basic Timer Simulation
+        let time = 3600; // 1 Hour in seconds
+        const timerElement = document.getElementById('timer');
+        
+        setInterval(() => {
+            if(time > 0){
+                time--;
+                const hours = Math.floor(time / 3600);
+                const minutes = Math.floor((time % 3600) / 60);
+                const seconds = time % 60;
+                
+                timerElement.innerText = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                // Warning color
+                if(time < 300) { // Last 5 mins
+                    timerElement.parentElement.classList.remove('bg-gray-800');
+                    timerElement.parentElement.classList.add('bg-red-600');
+                }
+            }
+        }, 1000);
+    </script>
+
+</body>
+                  </html>
