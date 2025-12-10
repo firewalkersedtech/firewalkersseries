@@ -1,10 +1,10 @@
 // MASTER DATABASE OF QUESTIONS
-// Key matches the Top Card in shifts.html for easy testing
+// Key format matches the Top Card in shifts.html: "12 Sep 2025 | Shift-3 (04:00 PM)"
 
 const allExamData = {
 
     // ============================================
-    // SHIFT DATA: 12 Sep 2025 (Mapped to Shift-3 for visibility)
+    // SHIFT 1: 12 Sep 2025 (Mapped to Shift-3 for Visibility)
     // ============================================
     "12 Sep 2025 | Shift-3 (04:00 PM)": [
         
@@ -17,7 +17,7 @@ const allExamData = {
         },
         {
             id: 2, section: "Reasoning",
-            text: "Select the related word pair.\n\nMekong : Tibet :: Amazon : ?",
+            text: "Select the related word from the given alternatives.\nMekong : Tibet :: Amazon : ?",
             options: ["Chile", "Peru", "Colombia", "Ecuador"],
             correct: "Peru"
         },
@@ -65,7 +65,7 @@ const allExamData = {
         },
         {
             id: 10, section: "Reasoning",
-            text: "Which of the following addresses is identical to: 'Arjun Mehta A-101, Emerald Towers, Surat, 395001'?",
+            text: "Which of the following addresses are identical to: 'Arjun Mehta A-101, Emerald Towers, Surat, 395001'?",
             options: ["1 and 2", "1 and 3", "2 and 4", "3 and 4"],
             correct: "1 and 2"
         },
@@ -458,5 +458,4 @@ const allExamData = {
             correct: "3"
         },
         {
-            id: 75, section: "Quant",
-            t
+      
